@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://<Mahendra-bharti>.github.io/<reactEmp>",
+  "homepage": "https://<mahendra-bharti>.github.io/<reactEmp>",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
