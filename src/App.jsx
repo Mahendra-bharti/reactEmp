@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Auth/Login';
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard';
 import AdminDashboard from './components/Dashboard/AdminDashboard';
@@ -12,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem('loggedInUser');
-
+    
     if (loggedInUser) {
       const parsedUserData = JSON.parse(loggedInUser);
       setUser(parsedUserData.role);
@@ -45,22 +44,15 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={!user ? <Login handleLogin={handleLogin} /> : <Navigate to={`/${user}`} />}
-        />
-        <Route
-          path="/admin"
-          element={user === 'admin' ? <AdminDashboard changeUser={handleLogout} /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/employee"
-          element={user === 'employee' ? <EmployeeDashboard changeUser={handleLogout} data={loggedInUserData} /> : <Navigate to="/" />}
-        />
-      </Routes>
-    </Router>
+    <>
+      {!user ? (
+        <Login handleLogin={handleLogin} />
+      ) : user === 'admin' ? (
+        <AdminDashboard changeUser={handleLogout} />
+      ) : (
+        <EmployeeDashboard changeUser={handleLogout} data={loggedInUserData} />
+      )}
+    </>
   );
 };
 
