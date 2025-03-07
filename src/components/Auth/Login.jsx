@@ -9,7 +9,7 @@ const Login = ({handleLogin}) => {
                e.preventDefault()
       
                handleLogin(email,password)
-         setEmail("")
+            setEmail("")
             setPassword("")
 
            
@@ -26,7 +26,7 @@ const Login = ({handleLogin}) => {
             <input value={email}
             onChange={(e)=>{
                 setEmail(e.target.value)
-            }}s
+            }}
             required className='  outline-none bg-transparent border-2  text-white border-emerald-600 text-lg py-2 px-6 rounded-full placeholder:text-gray-400' type="email" placeholder='Enter Your Email' />
             <input value={password}
                     onChange={(e)=>{
